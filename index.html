@@ -1,987 +1,950 @@
-
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create Your Account</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Your Account</title>
 
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 35px 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background:
-        radial-gradient(circle at 10% 10%, #818cf8, transparent 30%),
-        radial-gradient(circle at 90% 90%, #c084fc, transparent 30%),
-        linear-gradient(135deg, #312e81, #6366f1, #9333ea);
-    }
-
-    .main-card {
-      width: 100%;
-      max-width: 1100px;
-      min-height: 700px;
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.6);
-      border-radius: 28px;
-      background: white;
-      box-shadow: 0 30px 90px rgba(24,18,70,0.35);
-      animation: appear 0.7s ease;
-    }
-
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
+    <style>
+      * {
+        box-sizing: border-box;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 35px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background:
+          radial-gradient(circle at 10% 10%, #818cf8, transparent 30%),
+          radial-gradient(circle at 90% 90%, #c084fc, transparent 30%),
+          linear-gradient(135deg, #312e81, #6366f1, #9333ea);
       }
-    }
 
-    /* LEFT SIDE */
-
-    .left-panel {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 45px 38px;
-      overflow: hidden;
-      color: white;
-      background: linear-gradient(150deg, #312e81, #4f46e5, #9333ea);
-    }
-
-    .left-panel::before {
-      content: "";
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      top: -100px;
-      right: -120px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.09);
-    }
-
-    .left-panel::after {
-      content: "";
-      position: absolute;
-      width: 280px;
-      height: 280px;
-      bottom: -100px;
-      left: -110px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.08);
-    }
-
-    .brand {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-
-    .brand-icon {
-      width: 43px;
-      height: 43px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 13px;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.25);
-      font-size: 23px;
-    }
-
-    .left-content {
-      position: relative;
-      z-index: 1;
-      margin: 35px 0;
-    }
-
-    .welcome-tag {
-      display: inline-block;
-      padding: 8px 14px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 30px;
-      background: rgba(255,255,255,0.12);
-      color: #eeeaff;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .left-content h1 {
-      max-width: 380px;
-      margin: 0 0 18px;
-      font-size: 38px;
-      line-height: 1.2;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .left-content h1 span {
-      color: #ddd6fe;
-    }
-
-    .left-content > p {
-      max-width: 340px;
-      color: #e0e7ff;
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    /* Illustration */
-
-    .illustration {
-      position: relative;
-      z-index: 1;
-      height: 245px;
-      margin: 25px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .circle-bg {
-      position: absolute;
-      width: 210px;
-      height: 210px;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 50%;
-      background: rgba(255,255,255,0.09);
-    }
-
-    .circle-bg::before,
-    .circle-bg::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 50%;
-    }
-
-    .circle-bg::before {
-      inset: 18px;
-    }
-
-    .circle-bg::after {
-      inset: 38px;
-    }
-
-    .security-card {
-      position: relative;
-      z-index: 2;
-      width: 185px;
-      padding: 23px 17px;
-      border: 1px solid rgba(255,255,255,0.45);
-      border-radius: 22px;
-      background: rgba(255,255,255,0.17);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 15px 35px rgba(25,20,80,0.2);
-      text-align: center;
-      transform: rotate(-5deg);
-    }
-
-    .security-icon {
-      width: 75px;
-      height: 75px;
-      margin: 0 auto 13px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #ddd6fe, #ffffff);
-      color: #5b21b6;
-      font-size: 38px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    }
-
-    .security-card h4 {
-      margin: 0 0 6px;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .security-card p {
-      margin: 0;
-      color: #e9e4ff;
-      font-size: 11px;
-    }
-
-    .floating-icon {
-      position: absolute;
-      z-index: 3;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 15px;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(10px);
-      font-size: 23px;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .float-one {
-      top: 15px;
-      left: 20px;
-    }
-
-    .float-two {
-      right: 15px;
-      bottom: 20px;
-      animation-delay: 1s;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .left-footer {
-      position: relative;
-      z-index: 1;
-      color: #ddd6fe;
-      font-size: 12px;
-    }
-
-    /* RIGHT SIDE */
-
-    .right-panel {
-      padding: 38px 42px;
-      background: #ffffff;
-    }
-
-    .form-header {
-      margin-bottom: 28px;
-    }
-
-    .form-header h2 {
-      margin: 0 0 9px;
-      color: #29245e;
-      font-size: 29px;
-      font-weight: 800;
-      letter-spacing: -0.7px;
-    }
-
-    .form-header p {
-      margin: 0;
-      color: #85829b;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .form-label {
-      margin-bottom: 7px;
-      color: #353251;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .form-control {
-      min-height: 46px;
-      padding: 11px 13px;
-      border: 1px solid #e4e1f0;
-      border-radius: 10px;
-      background: #fafaff;
-      color: #29245e;
-      font-size: 13px;
-      transition: all 0.25s ease;
-    }
-
-    .form-control::placeholder {
-      color: #aaa8bc;
-    }
-
-    .form-control:focus {
-      border-color: #8174f5;
-      background: white;
-      box-shadow: 0 0 0 4px rgba(129,116,245,0.12);
-    }
-
-    .form-check-input {
-      cursor: pointer;
-    }
-
-    .form-check-input:checked {
-      background-color: #6555e8;
-      border-color: #6555e8;
-    }
-
-    .form-check-input:focus {
-      border-color: #8174f5;
-      box-shadow: 0 0 0 3px rgba(129,116,245,0.15);
-    }
-
-    .form-check-label {
-      color: #514e6b;
-      font-size: 12px;
-      cursor: pointer;
-    }
-
-    small.text-danger {
-      display: block;
-      min-height: 0;
-      margin-top: 5px;
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    .form-divider {
-      height: 1px;
-      margin: 22px 0;
-      background: linear-gradient(to right, transparent, #e2def0, transparent);
-    }
-
-    .btn-register {
-      min-height: 47px;
-      border: none;
-      border-radius: 10px;
-      background: linear-gradient(100deg, #4f46e5, #9333ea);
-      color: white;
-      font-size: 13px;
-      font-weight: 700;
-      transition: all 0.25s ease;
-    }
-
-    .btn-register:hover {
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(99,65,220,0.3);
-    }
-
-    .btn-reset {
-      min-height: 47px;
-      border: 1px solid #dedbef;
-      border-radius: 10px;
-      background: #f7f6ff;
-      color: #5b5680;
-      font-size: 13px;
-      font-weight: 700;
-      transition: all 0.2s ease;
-    }
-
-    .btn-reset:hover {
-      color: #4f46e5;
-      background: #eeecff;
-      border-color: #b9b2fa;
-    }
-
-    .bottom-text {
-      margin: 20px 0 0;
-      color: #9693a9;
-      text-align: center;
-      font-size: 11px;
-    }
-
-    /* SUCCESS TOAST */
-
-    .toast-message {
-      position: fixed;
-      top: 25px;
-      right: 25px;
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      max-width: calc(100% - 30px);
-      padding: 16px 21px;
-      border: 1px solid #22c55e;
-      border-radius: 14px;
-      background: #102b20;
-      color: white;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateX(30px);
-      transition: all 0.35s ease;
-    }
-
-    .toast-message.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(0);
-    }
-
-    .toast-icon {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      border-radius: 50%;
-      background: rgba(74,222,128,0.15);
-      color: #4ade80;
-      font-size: 21px;
-    }
-
-    .toast-message h4 {
-      margin: 0 0 4px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .toast-message p {
-      margin: 0;
-      color: #a7cbb5;
-      font-size: 12px;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 900px) {
       .main-card {
-        max-width: 650px;
-        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 1100px;
+        min-height: 700px;
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 28px;
+        background: white;
+        box-shadow: 0 30px 90px rgba(24, 18, 70, 0.35);
+        animation: appear 0.7s ease;
       }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* LEFT SIDE */
 
       .left-panel {
-        padding: 30px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 45px 38px;
+        overflow: hidden;
+        color: white;
+        background: linear-gradient(150deg, #312e81, #4f46e5, #9333ea);
+      }
+
+      .left-panel::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        right: -120px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .left-panel::after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        bottom: -100px;
+        left: -110px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .brand {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 21px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .brand-icon {
+        width: 43px;
+        height: 43px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 13px;
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        font-size: 23px;
       }
 
       .left-content {
-        margin: 30px 0 10px;
+        position: relative;
+        z-index: 1;
+        margin: 35px 0;
+      }
+
+      .welcome-tag {
+        display: inline-block;
+        padding: 8px 14px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #eeeaff;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
       }
 
       .left-content h1 {
-        font-size: 32px;
+        max-width: 380px;
+        margin: 0 0 18px;
+        font-size: 38px;
+        line-height: 1.2;
+        font-weight: 800;
+        letter-spacing: -1px;
       }
 
-      .illustration {
-        height: 190px;
-      }
-
-      .circle-bg {
-        width: 175px;
-        height: 175px;
-      }
-
-      .left-footer {
-        margin-top: 20px;
-      }
-
-      .right-panel {
-        padding: 35px;
-      }
-    }
-
-    @media (max-width: 576px) {
-      body {
-        padding: 15px 10px;
-      }
-
-      .main-card {
-        border-radius: 20px;
-      }
-
-      .left-panel {
-        padding: 25px 22px;
-      }
-
-      .left-content h1 {
-        font-size: 29px;
+      .left-content h1 span {
+        color: #ddd6fe;
       }
 
       .left-content > p {
-        font-size: 13px;
+        max-width: 340px;
+        color: #e0e7ff;
+        font-size: 14px;
+        line-height: 1.9;
       }
+
+      /* Illustration */
 
       .illustration {
-        height: 180px;
+        position: relative;
+        z-index: 1;
+        height: 245px;
+        margin: 25px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
+      .circle-bg {
+        position: absolute;
+        width: 210px;
+        height: 210px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .circle-bg::before,
+      .circle-bg::after {
+        content: "";
+        position: absolute;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 50%;
+      }
+
+      .circle-bg::before {
+        inset: 18px;
+      }
+
+      .circle-bg::after {
+        inset: 38px;
+      }
+
+      .security-card {
+        position: relative;
+        z-index: 2;
+        width: 185px;
+        padding: 23px 17px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.17);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 15px 35px rgba(25, 20, 80, 0.2);
+        text-align: center;
+        transform: rotate(-5deg);
+      }
+
+      .security-icon {
+        width: 75px;
+        height: 75px;
+        margin: 0 auto 13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #ddd6fe, #ffffff);
+        color: #5b21b6;
+        font-size: 38px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .security-card h4 {
+        margin: 0 0 6px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .security-card p {
+        margin: 0;
+        color: #e9e4ff;
+        font-size: 11px;
+      }
+
+      .floating-icon {
+        position: absolute;
+        z-index: 3;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        font-size: 23px;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .float-one {
+        top: 15px;
+        left: 20px;
+      }
+
+      .float-two {
+        right: 15px;
+        bottom: 20px;
+        animation-delay: 1s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .left-footer {
+        position: relative;
+        z-index: 1;
+        color: #ddd6fe;
+        font-size: 12px;
+      }
+
+      /* RIGHT SIDE */
+
       .right-panel {
-        padding: 28px 20px;
+        padding: 38px 42px;
+        background: #ffffff;
+      }
+
+      .form-header {
+        margin-bottom: 28px;
       }
 
       .form-header h2 {
-        font-size: 25px;
+        margin: 0 0 9px;
+        color: #29245e;
+        font-size: 29px;
+        font-weight: 800;
+        letter-spacing: -0.7px;
       }
 
-      .form-actions {
-        flex-direction: column;
+      .form-header p {
+        margin: 0;
+        color: #85829b;
+        font-size: 13px;
+        line-height: 1.6;
       }
 
-      .form-actions .btn {
-        width: 100%;
+      .form-label {
+        margin-bottom: 7px;
+        color: #353251;
+        font-size: 13px;
+        font-weight: 700;
       }
+
+      .form-control {
+        min-height: 46px;
+        padding: 11px 13px;
+        border: 1px solid #e4e1f0;
+        border-radius: 10px;
+        background: #fafaff;
+        color: #29245e;
+        font-size: 13px;
+        transition: all 0.25s ease;
+      }
+
+      .form-control::placeholder {
+        color: #aaa8bc;
+      }
+
+      .form-control:focus {
+        border-color: #8174f5;
+        background: white;
+        box-shadow: 0 0 0 4px rgba(129, 116, 245, 0.12);
+      }
+
+      .form-check-input {
+        cursor: pointer;
+      }
+
+      .form-check-input:checked {
+        background-color: #6555e8;
+        border-color: #6555e8;
+      }
+
+      .form-check-input:focus {
+        border-color: #8174f5;
+        box-shadow: 0 0 0 3px rgba(129, 116, 245, 0.15);
+      }
+
+      .form-check-label {
+        color: #514e6b;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      small.text-danger {
+        display: block;
+        min-height: 0;
+        margin-top: 5px;
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .form-divider {
+        height: 1px;
+        margin: 22px 0;
+        background: linear-gradient(
+          to right,
+          transparent,
+          #e2def0,
+          transparent
+        );
+      }
+
+      .btn-register {
+        min-height: 47px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(100deg, #4f46e5, #9333ea);
+        color: white;
+        font-size: 13px;
+        font-weight: 700;
+        transition: all 0.25s ease;
+      }
+
+      .btn-register:hover {
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(99, 65, 220, 0.3);
+      }
+
+      .btn-reset {
+        min-height: 47px;
+        border: 1px solid #dedbef;
+        border-radius: 10px;
+        background: #f7f6ff;
+        color: #5b5680;
+        font-size: 13px;
+        font-weight: 700;
+        transition: all 0.2s ease;
+      }
+
+      .btn-reset:hover {
+        color: #4f46e5;
+        background: #eeecff;
+        border-color: #b9b2fa;
+      }
+
+      .bottom-text {
+        margin: 20px 0 0;
+        color: #9693a9;
+        text-align: center;
+        font-size: 11px;
+      }
+
+      /* SUCCESS TOAST */
 
       .toast-message {
-        left: 15px;
-        right: 15px;
-        top: 15px;
+        position: fixed;
+        top: 25px;
+        right: 25px;
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        max-width: calc(100% - 30px);
+        padding: 16px 21px;
+        border: 1px solid #22c55e;
+        border-radius: 14px;
+        background: #102b20;
+        color: white;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(30px);
+        transition: all 0.35s ease;
       }
-    }
-  </style>
-</head>
 
-<body>
+      .toast-message.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
 
-  <div class="main-card">
+      .toast-icon {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: rgba(74, 222, 128, 0.15);
+        color: #4ade80;
+        font-size: 21px;
+      }
 
-    <!-- LEFT PANEL -->
+      .toast-message h4 {
+        margin: 0 0 4px;
+        font-size: 14px;
+        font-weight: 700;
+      }
 
-    <div class="left-panel">
+      .toast-message p {
+        margin: 0;
+        color: #a7cbb5;
+        font-size: 12px;
+      }
 
-      <div class="brand">
-        <div class="brand-icon">✦</div>
-        <span>CREATE ACCOUNT</span>
-      </div>
+      /* RESPONSIVE */
 
-      <div class="left-content">
+      @media (max-width: 900px) {
+        .main-card {
+          max-width: 650px;
+          grid-template-columns: 1fr;
+        }
 
-        <span class="welcome-tag">WELCOME TO OUR COMMUNITY</span>
+        .left-panel {
+          padding: 30px;
+        }
 
-        <h1>
-          Your Journey
-          <span>Starts Here.</span>
-        </h1>
+        .left-content {
+          margin: 30px 0 10px;
+        }
 
-        <p>
-          Create your account and become part of our community.
-          Fill in your details and get started with a better experience.
-        </p>
+        .left-content h1 {
+          font-size: 32px;
+        }
 
-        <div class="illustration">
+        .illustration {
+          height: 190px;
+        }
 
-          <div class="circle-bg"></div>
+        .circle-bg {
+          width: 175px;
+          height: 175px;
+        }
 
-          <div class="floating-icon float-one">✦</div>
+        .left-footer {
+          margin-top: 20px;
+        }
 
-          <div class="security-card">
-            <div class="security-icon">🔐</div>
-            <h4>Secure Registration</h4>
-            <p>Your information matters to us.</p>
-          </div>
+        .right-panel {
+          padding: 35px;
+        }
+      }
 
-          <div class="floating-icon float-two">✓</div>
+      @media (max-width: 576px) {
+        body {
+          padding: 15px 10px;
+        }
 
+        .main-card {
+          border-radius: 20px;
+        }
+
+        .left-panel {
+          padding: 25px 22px;
+        }
+
+        .left-content h1 {
+          font-size: 29px;
+        }
+
+        .left-content > p {
+          font-size: 13px;
+        }
+
+        .illustration {
+          height: 180px;
+        }
+
+        .right-panel {
+          padding: 28px 20px;
+        }
+
+        .form-header h2 {
+          font-size: 25px;
+        }
+
+        .form-actions {
+          flex-direction: column;
+        }
+
+        .form-actions .btn {
+          width: 100%;
+        }
+
+        .toast-message {
+          left: 15px;
+          right: 15px;
+          top: 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main-card">
+      <!-- LEFT PANEL -->
+
+      <div class="left-panel">
+        <div class="brand">
+          <div class="brand-icon">✦</div>
+          <span>CREATE ACCOUNT</span>
         </div>
 
-        <p class="mb-0">
-          ✨ Simple registration. Secure experience.
-        </p>
+        <div class="left-content">
+          <span class="welcome-tag">WELCOME TO OUR COMMUNITY</span>
 
-      </div>
+          <h1>
+            Your Journey
+            <span>Starts Here.</span>
+          </h1>
 
-      <div class="left-footer">
-        © 2026 Create Account. All rights reserved.
-      </div>
+          <p>
+            Create your account and become part of our community. Fill in your
+            details and get started with a better experience.
+          </p>
 
-    </div>
+          <div class="illustration">
+            <div class="circle-bg"></div>
 
-    <!-- RIGHT PANEL -->
+            <div class="floating-icon float-one">✦</div>
 
-    <div class="right-panel">
-
-      <div class="form-header">
-        <h2>Create Account</h2>
-        <p>Enter your personal details to register your account.</p>
-      </div>
-
-      <form action="" id="form" novalidate>
-
-        <div class="row g-3">
-
-          <div class="col-md-6">
-            <label for="name" class="form-label">Full Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              class="form-control"
-              placeholder="e.g. John"
-            />
-            <small class="text-danger" id="one"></small>
-          </div>
-
-          <div class="col-md-6">
-            <label for="email" class="form-label">Email Address</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              class="form-control"
-              placeholder="you@example.com"
-              autocomplete="off"
-            />
-            <small class="text-danger" id="two"></small>
-          </div>
-
-          <div class="col-md-6">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              class="form-control"
-              placeholder="Create a password"
-            />
-            <small class="text-danger" id="three"></small>
-          </div>
-
-          <div class="col-md-6">
-            <label for="confirm" class="form-label">Confirm Password</label>
-            <input
-              type="password"
-              name="confirm password"
-              id="confirm"
-              class="form-control"
-              placeholder="Re-enter your password"
-            />
-            <small class="text-danger" id="four"></small>
-          </div>
-
-          <div class="col-md-6">
-            <label for="phone" class="form-label">Phone Number</label>
-            <input
-              type="tel"
-              name="phone number"
-              id="phone"
-              class="form-control"
-              placeholder="10-digit mobile number"
-            />
-            <small class="text-danger" id="five"></small>
-          </div>
-
-          <div class="col-md-6">
-            <label for="dob" class="form-label">Date of Birth</label>
-            <input
-              type="date"
-              name="dob"
-              id="dob"
-              class="form-control"
-            />
-            <small class="text-danger" id="six"></small>
-          </div>
-
-          <div class="col-md-6">
-
-            <label class="form-label d-block">Gender</label>
-
-            <div class="d-flex flex-wrap gap-4 mt-2">
-
-              <div class="form-check">
-                <input
-                  type="radio"
-                  name="gen"
-                  id="radio1"
-                  class="form-check-input"
-                  value="Male"
-                />
-                <label for="radio1" class="form-check-label">Male</label>
-              </div>
-
-              <div class="form-check">
-                <input
-                  type="radio"
-                  name="gen"
-                  id="radio"
-                  class="form-check-input"
-                  value="Female"
-                />
-                <label for="radio" class="form-check-label">Female</label>
-              </div>
-
+            <div class="security-card">
+              <div class="security-icon">🔐</div>
+              <h4>Secure Registration</h4>
+              <p>Your information matters to us.</p>
             </div>
 
-            <small class="text-danger" id="sev"></small>
-
+            <div class="floating-icon float-two">✓</div>
           </div>
 
-          <div class="col-md-6 d-flex align-items-center">
+          <p class="mb-0">✨ Simple registration. Secure experience.</p>
+        </div>
 
-            <div>
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  name="agree"
-                  id="agree"
-                  class="form-check-input"
-                />
-                <label for="agree" class="form-check-label">
-                  I agree to Terms &amp; Conditions
-                </label>
-              </div>
+        <div class="left-footer">
+          © 2026 Create Account. All rights reserved.
+        </div>
+      </div>
 
-              <small class="text-danger" id="eig"></small>
+      <!-- RIGHT PANEL -->
+
+      <div class="right-panel">
+        <div class="form-header">
+          <h2>Create Account</h2>
+          <p>Enter your personal details to register your account.</p>
+        </div>
+
+        <form action="" id="form" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                placeholder="e.g. John"
+              />
+              <small class="text-danger" id="one"></small>
             </div>
 
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="form-control"
+                placeholder="you@example.com"
+                autocomplete="off"
+              />
+              <small class="text-danger" id="two"></small>
+            </div>
+
+            <div class="col-md-6">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="form-control"
+                placeholder="Create a password"
+              />
+              <small class="text-danger" id="three"></small>
+            </div>
+
+            <div class="col-md-6">
+              <label for="confirm" class="form-label">Confirm Password</label>
+              <input
+                type="password"
+                name="confirm password"
+                id="confirm"
+                class="form-control"
+                placeholder="Re-enter your password"
+              />
+              <small class="text-danger" id="four"></small>
+            </div>
+
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone Number</label>
+              <input
+                type="tel"
+                name="phone number"
+                id="phone"
+                class="form-control"
+                placeholder="10-digit mobile number"
+              />
+              <small class="text-danger" id="five"></small>
+            </div>
+
+            <div class="col-md-6">
+              <label for="dob" class="form-label">Date of Birth</label>
+              <input type="date" name="dob" id="dob" class="form-control" />
+              <small class="text-danger" id="six"></small>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label d-block">Gender</label>
+
+              <div class="d-flex flex-wrap gap-4 mt-2">
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    name="gen"
+                    id="radio1"
+                    class="form-check-input"
+                    value="Male"
+                  />
+                  <label for="radio1" class="form-check-label">Male</label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    name="gen"
+                    id="radio"
+                    class="form-check-input"
+                    value="Female"
+                  />
+                  <label for="radio" class="form-check-label">Female</label>
+                </div>
+              </div>
+
+              <small class="text-danger" id="sev"></small>
+            </div>
+
+            <div class="col-md-6 d-flex align-items-center">
+              <div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    name="agree"
+                    id="agree"
+                    class="form-check-input"
+                  />
+                  <label for="agree" class="form-check-label">
+                    I agree to Terms &amp; Conditions
+                  </label>
+                </div>
+
+                <small class="text-danger" id="eig"></small>
+              </div>
+            </div>
           </div>
 
-        </div>
+          <div class="form-divider"></div>
 
-        <div class="form-divider"></div>
+          <div class="d-flex justify-content-center gap-3 form-actions">
+            <input
+              type="submit"
+              value="Create Account"
+              class="btn btn-register px-4"
+            />
 
-        <div class="d-flex justify-content-center gap-3 form-actions">
+            <input type="reset" value="Reset Form" class="btn btn-reset px-4" />
+          </div>
 
-          <input
-            type="submit"
-            value="Create Account"
-            class="btn btn-register px-4"
-          />
-
-          <input
-            type="reset"
-            value="Reset Form"
-            class="btn btn-reset px-4"
-          />
-
-        </div>
-
-        <p class="bottom-text">
-          Your information is used for registration purposes.
-        </p>
-
-      </form>
-
+          <p class="bottom-text">
+            Your information is used for registration purposes.
+          </p>
+        </form>
+      </div>
     </div>
 
-  </div>
+    <!-- SUCCESS TOAST -->
 
-  <!-- SUCCESS TOAST -->
+    <div class="toast-message" id="toast" role="status" aria-live="polite">
+      <div class="toast-icon">✓</div>
 
-  <div class="toast-message" id="toast" role="status" aria-live="polite">
-
-    <div class="toast-icon">✓</div>
-
-    <div>
-      <h4>Registration Successful!</h4>
-      <p>Your account has been registered successfully.</p>
+      <div>
+        <h4>Registration Successful!</h4>
+        <p>Your account has been registered successfully.</p>
+      </div>
     </div>
 
-  </div>
+    <script>
+      let isvalid = true;
 
-  <script>
-    let isvalid = true;
+      let form = document.getElementById("form");
+      let toast = document.getElementById("toast");
+      let toastTimer;
 
-    let form = document.getElementById("form");
-    let toast = document.getElementById("toast");
-    let toastTimer;
+      let name = document.getElementById("name");
+      let n = /^[A-Za-z][A-Za-z0-9_]{5,15}$/;
 
-    let name = document.getElementById("name");
-    let n = /^[A-Za-z][A-Za-z0-9_]{5,15}$/;
+      let email = document.getElementById("email");
+      let e = /^[A-Za-z0-9%+-._]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
-    let email = document.getElementById("email");
-    let e = /^[A-Za-z0-9%+-._]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+      let password = document.getElementById("password");
+      let p = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&*()!]).{8}$/;
 
-    let password = document.getElementById("password");
-    let p = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$%^&*()!]).{8}$/;
+      let confirmm = document.getElementById("confirm");
 
-    let confirmm = document.getElementById("confirm");
+      let phone = document.getElementById("phone");
+      let ph = /^(\+91-)?[6-9]\d{9}$/;
 
-    let phone = document.getElementById("phone");
-    let ph = /^(\+91-)?[6-9]\d{9}$/;
+      let dob = document.getElementById("dob");
+      let d = /^\d{4}-(0[0-9]|1[0-2])-(0[0-9]|[12][0-9]|3[0-1])$/;
 
-    let dob = document.getElementById("dob");
-    let d = /^\d{4}-(0[0-9]|1[0-2])-(0[0-9]|[12][0-9]|3[0-1])$/;
+      let radio1 = document.getElementById("radio1");
+      let radio = document.getElementById("radio");
 
-    let radio1 = document.getElementById("radio1");
-    let radio = document.getElementById("radio");
+      let agree = document.getElementById("agree");
 
-    let agree = document.getElementById("agree");
+      let one = document.getElementById("one");
+      let two = document.getElementById("two");
+      let three = document.getElementById("three");
+      let four = document.getElementById("four");
+      let five = document.getElementById("five");
+      let six = document.getElementById("six");
+      let sev = document.getElementById("sev");
+      let eig = document.getElementById("eig");
 
-    let one = document.getElementById("one");
-    let two = document.getElementById("two");
-    let three = document.getElementById("three");
-    let four = document.getElementById("four");
-    let five = document.getElementById("five");
-    let six = document.getElementById("six");
-    let sev = document.getElementById("sev");
-    let eig = document.getElementById("eig");
-
-    function vname() {
-      if (name.value.trim() === "") {
-        one.textContent = "Name is required";
-        isvalid = false;
-      } else if (n.test(name.value.trim())) {
-        one.textContent = "";
-      } else {
-        isvalid = false;
-        one.textContent =
-          "Format wrong E.g: Srimathi_K or Sri_123 [Starts with letter, includes numbers or _]";
-      }
-    }
-
-    function vemail() {
-      if (email.value.trim() === "") {
-        isvalid = false;
-        two.textContent = "Email is required";
-      } else if (e.test(email.value.trim())) {
-        two.textContent = "";
-      } else {
-        isvalid = false;
-        two.textContent = "Format wrong eg: sri123@gmail.com";
-      }
-    }
-
-    function vpass() {
-      if (password.value.trim() === "") {
-        isvalid = false;
-        three.textContent = "Password is required";
-      } else if (p.test(password.value.trim())) {
-        three.textContent = "";
-      } else {
-        isvalid = false;
-        three.textContent =
-          "Use 8 characters with uppercase, lowercase, digit and special character. Eg: Sri@1234";
-      }
-    }
-
-    function vconfirm() {
-      if (confirmm.value.trim() === "") {
-        isvalid = false;
-        four.textContent = "Confirm password is required";
-      } else if (password.value.trim() === confirmm.value.trim()) {
-        four.textContent = "";
-      } else {
-        isvalid = false;
-        four.textContent = "Password mismatch. Check both passwords.";
-      }
-    }
-
-    function vphone() {
-      if (phone.value.trim() === "") {
-        isvalid = false;
-        five.textContent = "Phone is required";
-      } else if (ph.test(phone.value.trim())) {
-        five.textContent = "";
-      } else {
-        isvalid = false;
-        five.textContent = "Format wrong eg: +91-1234567890 or 9876543210";
-      }
-    }
-
-    function vdob() {
-      if (dob.value.trim() === "") {
-        isvalid = false;
-        six.textContent = "Date of birth is required";
-      } else if (d.test(dob.value.trim())) {
-        six.textContent = "";
-      } else {
-        isvalid = false;
-        six.textContent = "Format wrong eg: 2005-04-30";
-      }
-    }
-
-    function vr1() {
-      if (!radio1.checked && !radio.checked) {
-        isvalid = false;
-        sev.textContent = "Please select your gender";
-      } else {
-        sev.textContent = "";
-      }
-    }
-
-    function vagree() {
-      if (!agree.checked) {
-        isvalid = false;
-        eig.textContent = "Please agree to Terms & Conditions";
-      } else {
-        eig.textContent = "";
-      }
-    }
-
-    name.addEventListener("input", vname);
-    email.addEventListener("input", vemail);
-    password.addEventListener("input", vpass);
-    confirmm.addEventListener("input", vconfirm);
-    phone.addEventListener("input", vphone);
-    dob.addEventListener("input", vdob);
-
-    radio1.addEventListener("input", vr1);
-    radio.addEventListener("input", vr1);
-    agree.addEventListener("input", vagree);
-
-    name.addEventListener("blur", vname);
-    email.addEventListener("blur", vemail);
-    password.addEventListener("blur", vpass);
-    confirmm.addEventListener("blur", vconfirm);
-    phone.addEventListener("blur", vphone);
-    dob.addEventListener("blur", vdob);
-
-    radio1.addEventListener("blur", vr1);
-    radio.addEventListener("blur", vr1);
-    agree.addEventListener("blur", vagree);
-
-    function validate() {
-
-      isvalid = true;
-
-      vname();
-      vemail();
-      vpass();
-      vconfirm();
-      vphone();
-      vdob();
-      vr1();
-      vagree();
-
-      if (isvalid) {
-
-        form.reset();
-
-        toast.classList.add("show");
-
-        clearTimeout(toastTimer);
-
-        toastTimer = setTimeout(() => {
-          toast.classList.remove("show");
-        }, 3500);
-
+      function vname() {
+        if (name.value.trim() === "") {
+          one.textContent = "Name is required";
+          isvalid = false;
+        } else if (n.test(name.value.trim())) {
+          one.textContent = "";
+        } else {
+          isvalid = false;
+          one.textContent =
+            "Format wrong E.g: John or John_123 [Starts with letter, includes numbers or _]";
+        }
       }
 
-    }
+      function vemail() {
+        if (email.value.trim() === "") {
+          isvalid = false;
+          two.textContent = "Email is required";
+        } else if (e.test(email.value.trim())) {
+          two.textContent = "";
+        } else {
+          isvalid = false;
+          two.textContent = "Format wrong eg: john@gmail.com";
+        }
+      }
 
-    form.addEventListener("submit", (ev) => {
-      ev.preventDefault();
-      validate();
-    });
+      function vpass() {
+        if (password.value.trim() === "") {
+          isvalid = false;
+          three.textContent = "Password is required";
+        } else if (p.test(password.value.trim())) {
+          three.textContent = "";
+        } else {
+          isvalid = false;
+          three.textContent =
+            "Use 8 characters with uppercase, lowercase, digit and special character. Eg: John@1234";
+        }
+      }
 
-    form.addEventListener("reset", () => {
-      setTimeout(() => {
-        one.textContent = "";
-        two.textContent = "";
-        three.textContent = "";
-        four.textContent = "";
-        five.textContent = "";
-        six.textContent = "";
-        sev.textContent = "";
-        eig.textContent = "";
-      }, 0);
-    });
+      function vconfirm() {
+        if (confirmm.value.trim() === "") {
+          isvalid = false;
+          four.textContent = "Confirm password is required";
+        } else if (password.value.trim() === confirmm.value.trim()) {
+          four.textContent = "";
+        } else {
+          isvalid = false;
+          four.textContent = "Password mismatch. Check both passwords.";
+        }
+      }
 
-  </script>
+      function vphone() {
+        if (phone.value.trim() === "") {
+          isvalid = false;
+          five.textContent = "Phone is required";
+        } else if (ph.test(phone.value.trim())) {
+          five.textContent = "";
+        } else {
+          isvalid = false;
+          five.textContent = "Format wrong eg: +91-1234567890 or 9876543210";
+        }
+      }
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      function vdob() {
+        if (dob.value.trim() === "") {
+          isvalid = false;
+          six.textContent = "Date of birth is required";
+        } else if (d.test(dob.value.trim())) {
+          six.textContent = "";
+        } else {
+          isvalid = false;
+          six.textContent = "Format wrong eg: 2003-03-13";
+        }
+      }
 
-</body>
+      function vr1() {
+        if (!radio1.checked && !radio.checked) {
+          isvalid = false;
+          sev.textContent = "Please select your gender";
+        } else {
+          sev.textContent = "";
+        }
+      }
+
+      function vagree() {
+        if (!agree.checked) {
+          isvalid = false;
+          eig.textContent = "Please agree to Terms & Conditions";
+        } else {
+          eig.textContent = "";
+        }
+      }
+
+      name.addEventListener("input", vname);
+      email.addEventListener("input", vemail);
+      password.addEventListener("input", vpass);
+      confirmm.addEventListener("input", vconfirm);
+      phone.addEventListener("input", vphone);
+      dob.addEventListener("input", vdob);
+
+      radio1.addEventListener("input", vr1);
+      radio.addEventListener("input", vr1);
+      agree.addEventListener("input", vagree);
+
+      name.addEventListener("blur", vname);
+      email.addEventListener("blur", vemail);
+      password.addEventListener("blur", vpass);
+      confirmm.addEventListener("blur", vconfirm);
+      phone.addEventListener("blur", vphone);
+      dob.addEventListener("blur", vdob);
+
+      radio1.addEventListener("blur", vr1);
+      radio.addEventListener("blur", vr1);
+      agree.addEventListener("blur", vagree);
+
+      function validate() {
+        isvalid = true;
+
+        vname();
+        vemail();
+        vpass();
+        vconfirm();
+        vphone();
+        vdob();
+        vr1();
+        vagree();
+
+        if (isvalid) {
+          form.reset();
+
+          toast.classList.add("show");
+
+          clearTimeout(toastTimer);
+
+          toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+          }, 3500);
+        }
+      }
+
+      form.addEventListener("submit", (ev) => {
+        ev.preventDefault();
+        validate();
+      });
+
+      form.addEventListener("reset", () => {
+        setTimeout(() => {
+          one.textContent = "";
+          two.textContent = "";
+          three.textContent = "";
+          four.textContent = "";
+          five.textContent = "";
+          six.textContent = "";
+          sev.textContent = "";
+          eig.textContent = "";
+        }, 0);
+      });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
